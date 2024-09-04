@@ -14,7 +14,6 @@ myfont = pygame.font.SysFont("Comic Sans", 75)
 
 player = pygame.image.load('player.png')
 
-# Load the background music file and food sound effect
 mixer.music.load('potato.mp3')
 food_sound = mixer.Sound('food.mp3')
 
@@ -42,7 +41,6 @@ def playgame():
     gravity = 200
     mixer.music.set_volume(0.7)
     food_sound.set_volume(1)
-    mixer.music.play(-1)  # Loop the background music indefinitely
     global score, player, xr, xl, wlx, wall
     wlx = 100
     wall = pygame.transform.scale(wall, (wlx, 800))
@@ -83,7 +81,6 @@ def playgame():
             while L == 1:
                 screen.blit(youlose_image, (0, 0))
                 pygame.display.update()
-                mixer.music.stop()
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         pygame.quit()
@@ -105,7 +102,7 @@ def playgame():
             else:
                 gravity -= 1
             spawnburger()
-            food_sound.play()  # Play the food sound effect
+            food_sound.play() 
 
         screen.blit(pool, (0, 0))
         screen.blit(player, (x, y))
